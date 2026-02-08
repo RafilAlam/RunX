@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <functional>
 #include <string>
+#include <limits>
 #include <map>
 
 typedef std::map<std::string, std::string> configmap;
@@ -56,6 +57,24 @@ void init(int argc) {
       map.erase(argv[i]);
     }
     map_to_file(map, path + "runx.conf");
+  };
+
+  functions["ls"] = [path](const char* argv[]) {
+    std::ifstream file(path + "runx.conf");
+
+    if (argv[2] && std::string(argv[2]) == "-a") {
+      std::string appLine;
+      while (std::getline(file, appLine)) {
+        std::cout << appLine << std::endl;
+      }
+    }
+    else {
+      std::string appName;
+      while (std::getline(file, appName, '=') && file.ignore(std::numeric_limits<std::streamsize>::max(), '\n')) {
+        std::cout << appName << std::endl;
+      }
+    }
+    file.close();
   };
 }
 
