@@ -48,7 +48,7 @@ void init(int argc) {
 
   functions["run"] = [path](const char* argv[]) {
     configmap map = file_to_map(path + "runx.conf");
-    std::system(map[argv[2]].c_str());
+    std::system(("nohup " + map[argv[2]] + " &").c_str());
   };
 
   functions["rm"] = [path, argc](const char* argv[]) {
