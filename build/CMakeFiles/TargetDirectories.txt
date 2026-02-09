@@ -1,0 +1,3 @@
+/home/rafil/Projects/RunX/build/CMakeFiles/runx.dir
+/home/rafil/Projects/RunX/build/CMakeFiles/edit_cache.dir
+/home/rafil/Projects/RunX/build/CMakeFiles/rebuild_cache.dir
