@@ -15,8 +15,8 @@ runx ls -a # Full list including executable directories
 
 # Run an application
 runx run <app_name>
-```
-<br>
+``` 
+  
 ## Installation
 ### From Releases:
 
