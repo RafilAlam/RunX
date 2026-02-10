@@ -1,5 +1,5 @@
 # RunX
-An app registry and launcher for linux operating systems
+A convenient app library and launcher for linux operating systems
 
 ## Usage
 ```bash

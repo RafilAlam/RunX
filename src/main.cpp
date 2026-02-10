@@ -15,6 +15,14 @@ void init(int argc) {
   std::string path = std::getenv("HOME") + std::string("/.config/runx/");
   std::filesystem::create_directory(path);
 
+  functions[""] = [path](const char* argv[]) {
+    std::cout << "RunX | App Library for Linux Operating Systems\n\n"
+              << "runx add <app_name> <executable_directory_path> - Register an application with RunX\n"
+              << "runx rm <app_name1> <app_name2> <app_name...>   - Unregister application(s)\n"
+              << "runx ls [-a]                                    - Lists registered applications (-a lists in full detail)\n"
+              << "runx run <app_name>                             - Runs a registered application\n";
+  };
+
   functions["add"] = [path](const char* argv[]) {
     std::ofstream file(path + "runx.conf", std::ios::app);
     if (!file) {
@@ -60,5 +68,9 @@ void init(int argc) {
 
 int main(int argc, const char* argv[]) {
   init(argc);
+  if (argc==1) {
+    functions[""](argv);
+    return 0;
+  }
   functions[argv[1]](argv);
 }
